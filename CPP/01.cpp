@@ -30,4 +30,15 @@ int main(){
     int x = 10, y = 20;
     cout<<(x>y?x:y) <<endl;
 
+    // loops
+    for(int i=0;i<10;i++){
+        cout<<i<<endl;
+    }
+
+    // do while loop
+    int i=0;
+    do{
+        cout<<i<<endl;
+        i++;
+    }while(i<10);
 }
