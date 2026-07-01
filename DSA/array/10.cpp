@@ -22,6 +22,66 @@ void rowsum(int arr[][MAX], int n,int m){
     cout<<maxi<<endl;
     cout<<index;
 }
+void spiral(int arr[][MAX], int n, int m){
+    int i = 0;
+    for(int j=0;j<m;j++){
+        if(i==0){
+            while(i<n){
+                cout<<arr[i][j]<<" ";
+                i++;
+            }
+            i=  n-1;
+        }
+        else{
+            while(i>=0){
+                cout<<arr[i][j]<<" ";
+                i--;
+            }
+            i=0;
+        }
+    }
+}
+
+
+
+
+void spiral1(int arr[][MAX], int n, int m) {
+    int toprow = 0;
+    int bottomrow = n - 1;
+    int leftcol = 0;
+    int rightcol = m - 1;
+
+    while (toprow <= bottomrow && leftcol <= rightcol) {
+
+        // Top row
+        for (int i = leftcol; i <= rightcol; i++) {
+            cout << arr[toprow][i] << " ";
+        }
+        toprow++;
+
+        // Right column
+        for (int i = toprow; i <= bottomrow; i++) {
+            cout << arr[i][rightcol] << " ";
+        }
+        rightcol--;
+
+        // Bottom row
+        if (toprow <= bottomrow) {
+            for (int i = rightcol; i >= leftcol; i--) {
+                cout << arr[bottomrow][i] << " ";
+            }
+            bottomrow--;
+        }
+
+        // Left column
+        if (leftcol <= rightcol) {
+            for (int i = bottomrow; i >= toprow; i--) {
+                cout << arr[i][leftcol] << " ";
+            }
+            leftcol++;
+        }
+    }
+}
 int main(){
     int n;
     cin>>n;
@@ -43,7 +103,10 @@ int main(){
     //         }
     //     }
     // }
-    rowsum(arr,n, m);
+    // rowsum(arr,n, m);
+
+    // spiral(arr,n,m);
+    spiral1(arr,n,m);
     return 0;
 
     // cout<<"NO"<<endl;
