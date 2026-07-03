@@ -1,1 +1,0 @@
- // spiral(arr,n,m);
