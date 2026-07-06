@@ -43,6 +43,17 @@ Node* insertathead(Node* head, int m){
     return newNode;
 }
 
+Node* deleteatend(Node* head){
+    Node* temp = head;
+    while(temp->next->next!=head){
+        temp = temp->next;
+    }
+    Node* delele = temp->next;
+    delete delele;
+    temp->next = head;
+    return head;
+}
+
 Node* print(Node* head){
     if(head==nullptr){
         return nullptr;
@@ -53,6 +64,7 @@ Node* print(Node* head){
         temp = temp->next;
     }
     cout<<temp->data;
+  
   
 }
 
@@ -70,6 +82,9 @@ int main(){
     int k;
     cin>>k;
    head =  insertathead(head,k);
+    print(head);
+    head  = deleteatend(head);
+    cout<<endl;
     print(head);
 
 }
