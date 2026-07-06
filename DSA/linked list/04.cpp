@@ -26,6 +26,23 @@ Node* createatend(Node* head , int m){
     return head;
 }
 
+Node* insertathead(Node* head, int m){
+    Node* temp = head;
+    if(head==nullptr){
+        Node* curr  = new Node(m);
+        head = curr;
+        head->next = head;
+        return head;
+    }
+    while(temp->next!=head){
+        temp = temp->next;
+    }
+    Node* newNode = new Node(m);
+    temp->next = newNode;
+    newNode->next= head;
+    return newNode;
+}
+
 Node* print(Node* head){
     if(head==nullptr){
         return nullptr;
@@ -48,6 +65,11 @@ int main(){
         cin>>m;
        head =  createatend(head,m);
     }
+    print(head);
+    cout<<endl;
+    int k;
+    cin>>k;
+   head =  insertathead(head,k);
     print(head);
 
 }
