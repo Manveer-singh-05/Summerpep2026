@@ -1,41 +1,65 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Node{
-    public:
+
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
-    Node(int x){
+
+    Node(int x) {
         data = x;
         left = nullptr;
         right = nullptr;
     }
-void preorder(Node* root){
-    if(root == nullptr){
-        return;
-    }
-    cout<<root->data<<" ";
+};
+
+// Traversals
+void preorder(Node* root) {
+    if (root == nullptr) return;
+    cout << root->data << " ";
     preorder(root->left);
     preorder(root->right);
 }
-void inorder(Node* root){
-    if(root==nullptr){
-        return;
-    }
+
+void inorder(Node* root) {
+    if (root == nullptr) return;
     inorder(root->left);
-    cout<<root->data>>" ";
+    cout << root->data << " ";
     inorder(root->right);
 }
-void postorder(Node* root){
-    if(root==nullptr){
-        return;
-    }
+
+void postorder(Node* root) {
+    if (root == nullptr) return;
     postorder(root->left);
     postorder(root->right);
-    cout<<root->data>>" ";
+    cout << root->data << " ";
 }
-};
-int main(){
-    Node* head  = new Node(9);
-    cout<<head->data;
+
+// Count nodes
+int countNode(Node* root) {
+    if (root == nullptr) return 0;
+    return countNode(root->left) + countNode(root->right) + 1;
+}
+
+int main() {
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->right->right = new Node(5);
+
+    cout << "Total Nodes: " << countNode(root) << endl;
+
+    cout << "Preorder: ";
+    preorder(root);
+    cout << endl;
+
+    cout << "Inorder: ";
+    inorder(root);
+    cout << endl;
+
+    cout << "Postorder: ";
+    postorder(root);
+    cout << endl;
 }
